@@ -8,7 +8,7 @@ This repository contains my OpenCore EFI configuration for running macOS Sequoia
 > [!IMPORTANT]
 > **DisplayPort required**
 >
-> The configuration has been tested with a monitor connected via DisplayPort. HDMI is not guaranteed to work.
+> The configuration has been tested with a monitor connected via DisplayPort. HDMI is not guaranteed to work and will probably not function properly.
 
 ## Hardware
 
@@ -30,22 +30,26 @@ This repository contains my OpenCore EFI configuration for running macOS Sequoia
 | macOS Boot | Working |
 | Intel UHD 630 Graphics Acceleration | Working |
 | DisplayPort | Working |
-| HDMI | Untested |
-| Audio | Not confirmed |
-| Wi-Fi / Bluetooth | Not confirmed |
-| Ethernet | Not confirmed |
-| Sleep / Wake | Not confirmed |
+| HDMI | Untested/Not Working |
+| Audio | Working |
+| Wi-Fi / Bluetooth | Working |
+| Ethernet | Working |
+| Sleep / Wake | Untested |
 
-## Installation
+### SMBIOS
 
-1. Download the EFI folder from this repository.
-2. Configure your own SMBIOS and serial numbers.
-3. Mount your EFI partition.
-4. Copy the EFI folder to your EFI partition.
-5. Boot using OpenCore.
+The EFI does not include personal SMBIOS information.
 
-**Important:** Never use someone else's SMBIOS serial numbers.
+Before using this EFI, generate your own SMBIOS values using [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS).
 
+Update the following entries under `PlatformInfo → Generic` in `config.plist`:
+
+- `SystemSerialNumber`
+- `MLB`
+- `SystemUUID`
+- `ROM`
+
+Do not reuse SMBIOS values from other users.
 ## Disclaimer
 
 This project is provided **AS IS**, without any warranty or guarantee of functionality.
